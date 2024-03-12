@@ -1,0 +1,37 @@
+﻿@model Category
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 action="text-light">Create Category</h2>
+            <hr />
+        </div>
+
+        @*<div asp-validation-summary="ModelOnly"></div>*@
+        <div class="form-floating mb-3 row">
+            <!--Manda ao Name diretamente graças ao model inserido em cima(asp-for)-->
+            <label asp-for="Name" class="p-0"></label>
+            <input asp-for="Name" class="form-control"/>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-floating mb-3 row">
+            <!--Manda ao Name diretamente graças ao model inserido em cima (asp-for)-->
+            <label asp-for="DisplayOrder" class="p-0"></label>
+            <input asp-for="DisplayOrder" class="form-control"/>
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary " style="width:150px"><i class="bi bi-upload"></i></button>
+        <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
