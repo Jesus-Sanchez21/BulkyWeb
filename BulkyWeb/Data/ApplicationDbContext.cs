@@ -1,16 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BulkyWeb.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace BulkyWeb.Models
+namespace BulkyWeb.Data
 {
     public class ApplicationDbContext : DbContext //Root class of entity framework
     {
-        public ApplicationDbContext (DbContextOptions <ApplicationDbContext> options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            
+
         }
 
         //Create Table
-        public DbSet <Category> Categories { get; set; } //Dbset para a tabela category
+        public DbSet<Category> Categories { get; set; } //Dbset para a tabela category
 
         //Add Seed Data to table
         protected override void OnModelCreating(ModelBuilder modelBuilder)
