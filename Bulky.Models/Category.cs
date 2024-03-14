@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace BulkyWeb.Models
+namespace Bulky.Models
 {
     /* CRUD CATEGORIAS
      * 
@@ -18,19 +18,18 @@ namespace BulkyWeb.Models
      * 
      * 
      */
-    public class Category 
+    public class Category
     {
         [Key]
         public int Id { get; set; }
 
 
-        [Required]
         [MaxLength(30)]
         [DisplayName("Category Name")]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
 
-        [Range(1,100, ErrorMessage = "Must be between 1-100")]
+        [Range(1, 100, ErrorMessage = "Must be between 1-100")]
         [DisplayName("Display Order")]
         public int DisplayOrder { get; set; }
     }
