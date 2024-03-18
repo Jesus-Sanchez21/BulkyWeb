@@ -36,10 +36,10 @@ namespace Bulky.DataAccess.Repository.IRepository
 
         //------  1  ---------
 
-        IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(string? includeProperties = null);
 
         //------  2  ---------
-        T Get(Expression<Func<T,bool>> filter); //Using a LINQ operator to get one record
+        T Get(Expression<Func<T,bool>> filter, string? includeProperties = null); //Using a LINQ operator to get one record
 
         //------  3  ---------
         void Add(T entity);
