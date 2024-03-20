@@ -1,9 +1,10 @@
 ﻿using Bulky.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bulky.DataAccess.Data
 {
-    public class ApplicationDbContext : DbContext //Root class of entity framework
+    public class ApplicationDbContext : IdentityDbContext //Root class of entity framework
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -11,12 +12,17 @@ namespace Bulky.DataAccess.Data
         }
 
         //Create Table
-        public DbSet<Category> Categories { get; set; } //Dbset para a tabela category
+        public DbSet<Category> Categories { get; set; } //Dbset para a tabela categories
         public DbSet<Product> Products { get; set; } //Dbset para a tabela products
+        public DbSet<Company> Companies { get; set; } //Dbset para a tabela companies
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; } //Dbset para a tabela ApplicationUser
 
         //Add Seed Data to table
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Category>().HasData( //Criação dos objetos 
                 new Category { Id = 1, Name = "Action", DisplayOrder = 1 },
                 new Category { Id = 2, Name = "Sci-fi", DisplayOrder = 2 },
